@@ -34,10 +34,12 @@ function kms_mapwidget_pane_render($subtype, $conf, $panel_args, $context) {
 
   }
 
+  $service_name = $nw->field_service_name->value();
+
   drupal_add_js(
     array('kms_mapwidget' => array(
       'name'             => $nw->title->value(),
-      'service_name'     => ( empty($nw->field_service_name->value()) ? FALSE : $nw->field_service_name->name->value()  ),
+      'service_name'     => ( empty($service_name) ? FALSE : $nw->field_service_name->name->value()  ),
       'service_layer'    => $nw->field_service_layer->value(),
       'overlay'          => (bool) $nw->field_overlay->value(),
       'center_longitude' => (int) $nw->field_center_longitude->value(),
